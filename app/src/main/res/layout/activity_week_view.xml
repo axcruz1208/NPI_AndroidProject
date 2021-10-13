@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".WeekViewActivity">
 
     <Button
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#69328F"
-        android:onClick="weeklyAction"
-        android:text="@string/Semanal"
+        android:onClick="dailyAction"
+        android:text="Diario"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -20,16 +22,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="20dp">
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:onClick="previousMonthAction"
+            android:onClick="previousWeekAction"
             android:text="@string/back"
             android:textColor="#69328F"
             android:textSize="20sp"
@@ -38,19 +40,19 @@
         <TextView
             android:id="@+id/monthYearTV"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:layout_height="wrap_content"
             android:text="Feb 2021"
+            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textColor="@color/black"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:onClick="nextMonthAction"
+            android:onClick="nextWeekAction"
             android:text="@string/forward"
             android:textColor="#69328F"
             android:textSize="20sp"
@@ -133,19 +135,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="168dp"
+        android:layout_weight="1">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="547dp"
+        android:orientation="horizontal"></LinearLayout>
 
 </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-

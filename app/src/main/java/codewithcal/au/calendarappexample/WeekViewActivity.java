@@ -1,6 +1,7 @@
 package codewithcal.au.calendarappexample;
 
 import static codewithcal.au.calendarappexample.CalendarUtils.daysInMonthArray;
+import static codewithcal.au.calendarappexample.CalendarUtils.daysInWeekArray;
 import static codewithcal.au.calendarappexample.CalendarUtils.monthYearFromDate;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,27 +17,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener
-{
+public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private GestureDetector gestureDetector;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_week_view);
         this.gestureDetector = new GestureDetector(this,this);
         gestureDetector.setOnDoubleTapListener(this);
         initWidgets();
-        CalendarUtils.selectedDate = LocalDate.now();
-        CalendarUtils.actualDate = LocalDate.now();
-        setMonthView();
+        setWeekView();
     }
 
     private void initWidgets()
@@ -45,38 +41,24 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         monthYearText = findViewById(R.id.monthYearTV);
     }
 
-    private void setMonthView()
+    private void setWeekView()
     {
         monthYearText.setText(monthYearFromDate(CalendarUtils.selectedDate));
-        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtils.selectedDate);
+        ArrayList<LocalDate> days = daysInWeekArray(CalendarUtils.selectedDate);
 
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
+        CalendarAdapter calendarAdapter = new CalendarAdapter(days, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
     }
 
-    public void previousMonthAction(View view)
-    {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
-        setMonthView();
-    }
-
-    public void nextMonthAction(View view)
-    {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusMonths(1);
-        setMonthView();
-    }
-
     @Override
     public void onItemClick(int position, String dayText)
     {
-        if(!dayText.equals(""))
-        {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtils.selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-        }
+        String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtils.selectedDate);
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -116,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     @Override
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        startActivity(new Intent(this, WeekViewActivity.class));
+        startActivity(new Intent(this, DailyViewActivity.class));
         return false;
     }
 
@@ -130,15 +112,17 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         return false;
     }
 
-    public void weeklyAction(View view) {
-        startActivity(new Intent(this, WeekViewActivity.class));
+    public void dailyAction(View view) {
+        startActivity(new Intent(this, DailyViewActivity.class));
+    }
+
+    public void previousWeekAction(View view) {
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1);
+        setWeekView();
+    }
+
+    public void nextWeekAction(View view) {
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusWeeks(1);
+        setWeekView();
     }
 }
-
-
-
-
-
-
-
-
