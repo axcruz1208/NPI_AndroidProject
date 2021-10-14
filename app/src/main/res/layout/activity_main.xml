@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:background="#69328F"
         android:onClick="weeklyAction"
-        android:text="@string/Semanal"
+        android:text="Semanal"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />

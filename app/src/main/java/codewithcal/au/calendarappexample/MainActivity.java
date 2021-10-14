@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private GestureDetector gestureDetector;
+    public static LocalDate selectedDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -73,8 +74,10 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     {
         if(!dayText.equals(""))
         {
+            selectedDay = LocalDate.of(CalendarUtils.selectedDate.getYear(), CalendarUtils.selectedDate.getMonth(), Integer.parseInt(dayText));
             String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtils.selectedDate);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, DailyViewActivity.class));
         }
     }
 
