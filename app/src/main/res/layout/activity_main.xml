@@ -10,9 +10,9 @@
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#69328F"
+        android:background="#A961BD"
         android:onClick="weeklyAction"
-        android:text="Semanal"
+        android:text="Weekly"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -31,7 +31,7 @@
             android:background="@null"
             android:onClick="previousMonthAction"
             android:text="@string/back"
-            android:textColor="#69328F"
+            android:textColor="#A961BD"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
             android:background="@null"
             android:onClick="nextMonthAction"
             android:text="@string/forward"
-            android:textColor="#69328F"
+            android:textColor="#A961BD"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="LUN"
+            android:text="MON"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp" />
@@ -76,7 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MAR"
+            android:text="TUE"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp" />
@@ -85,7 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MIÉ"
+            android:text="WED"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp" />
@@ -94,7 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="JUE"
+            android:text="THU"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp" />
@@ -103,7 +103,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="VIE"
+            android:text="FRI"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp" />
@@ -112,7 +112,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SÁB"
+            android:text="SAT"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp" />
@@ -121,7 +121,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="DOM"
+            android:text="SUN"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp" />

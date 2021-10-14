@@ -2,10 +2,4 @@
     <string name="app_name">CalendarAppExample</string>
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
-    <string-array name="Clases">
-        <item>NPI</item>
-        <item>RSC</item>
-        <item>VC</item>
-        <item>PL</item>
-    </string-array>
 </resources>

@@ -22,7 +22,7 @@
             android:fontFamily="serif"
             android:gravity="center"
             android:text="DiaDeLaSemana"
-            android:textColor="#69328F"
+            android:textColor="#A961BD"
             android:textSize="50dp"
             app:layout_constraintBottom_toTopOf="@+id/MonthAndDay"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
             android:fontFamily="serif"
             android:gravity="center"
             android:text="day/month"
-            android:textColor="#69328F"
+            android:textColor="#A961BD"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,16 +58,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/MonthAndDay" />
 
-        <Spinner
-            android:id="@+id/spinner_clases"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </LinearLayout>
