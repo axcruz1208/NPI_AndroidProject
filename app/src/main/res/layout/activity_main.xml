@@ -13,6 +13,7 @@
         android:background="#A961BD"
         android:onClick="weeklyAction"
         android:text="Weekly"
+        android:fontFamily="serif"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Feb 2021"
+            android:fontFamily="serif"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />

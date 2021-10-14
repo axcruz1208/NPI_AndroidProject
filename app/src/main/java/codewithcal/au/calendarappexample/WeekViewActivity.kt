@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import android.view.MotionEvent
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
 import com.islandparadise14.mintable.MinTimeTableView
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
+import com.islandparadise14.mintable.tableinterface.OnScheduleClickListener
 import java.time.LocalDate
 
 class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
@@ -28,6 +30,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
     private var scheduleList: ArrayList<ScheduleEntity> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_week_view)
         createSchedule()
@@ -53,20 +56,26 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
             ScheduleDay.WEDNESDAY, //ScheduleDay object (MONDAY ~ SUNDAY)
             "9:30", //startTime format: "HH:mm"
             "11:30", //endTime  format: "HH:mm"
-            "#73fcae68", //backgroundColor (optional)
+            "#f9c743", //backgroundColor (optional)
             "#000000" //textcolor (optional)
         )
 
-        val schedule2 = ScheduleEntity(33, "RSC-T", "0.8", ScheduleDay.WEDNESDAY, "11:30", "13:30", "#73fcae68", "#000000")
-        val schedule3 = ScheduleEntity(34, "NPI-P", "3.3", ScheduleDay.THURSDAY, "8:30", "10:30", "#73fcae68", "#000000")
-        val schedule4 = ScheduleEntity(35, "NPI-T", "1.5", ScheduleDay.THURSDAY, "10:30", "12:30", "#73fcae68", "#000000")
-        val schedule5 = ScheduleEntity(36, "PL-T", "1.5", ScheduleDay.THURSDAY, "12:30", "14:30", "#73fcae68", "#000000")
+        val schedule2 = ScheduleEntity(33, "RSC-P", "0.8", ScheduleDay.WEDNESDAY, "11:30", "13:30", "#f9da89", "#000000")
+        val schedule3 = ScheduleEntity(34, "NPI-P", "3.3", ScheduleDay.THURSDAY, "8:30", "10:30", "#cfe98a", "#000000")
+        val schedule4 = ScheduleEntity(35, "NPI-T", "1.5", ScheduleDay.THURSDAY, "10:30", "12:30", "#8faf39", "#000000")
+        val schedule5 = ScheduleEntity(36, "PL-T", "1.5", ScheduleDay.THURSDAY, "12:30", "14:30", "#5ad69c", "#000000")
+        val schedule6 = ScheduleEntity(36, "VC-T", "1.7", ScheduleDay.FRIDAY, "8:30", "10:30", "#c95873", "#000000")
+        val schedule7 = ScheduleEntity(36, "VC-P", "3.7", ScheduleDay.FRIDAY, "10:30", "12:30", "#fa95ad", "#000000")
+        val schedule8 = ScheduleEntity(36, "PL-P", "2.8", ScheduleDay.FRIDAY, "12:30", "14:30", "#94f5c8", "#000000")
 
         scheduleList.add(schedule)
         scheduleList.add(schedule2)
         scheduleList.add(schedule3)
         scheduleList.add(schedule4)
         scheduleList.add(schedule5)
+        scheduleList.add(schedule6)
+        scheduleList.add(schedule7)
+        scheduleList.add(schedule8)
     }
 
     private fun initWidgets() {

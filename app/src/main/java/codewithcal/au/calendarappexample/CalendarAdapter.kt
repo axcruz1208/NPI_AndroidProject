@@ -22,13 +22,10 @@ internal class CalendarAdapter( private val days: ArrayList<LocalDate?>,  privat
         val date = days[position]
         if (date == null) holder.dayOfMonth.text = "" else {
             holder.dayOfMonth.text = date.dayOfMonth.toString()
-            if (date == CalendarUtils.actualDate) holder.parentView.setBackgroundColor(
-                Color.parseColor(
-                    "#FFA961BD"
-                )
-            ) else holder.parentView.setBackgroundColor(
-                Color.WHITE
-            )
+            if (date == CalendarUtils.actualDate)
+                holder.parentView.setBackgroundColor(Color.parseColor("#FFA961BD"))
+            else
+                holder.parentView.setBackgroundColor(Color.WHITE)
         }
     }
 
