@@ -107,4 +107,8 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.O
     fun weeklyAction(view: View1?) {
         startActivity(Intent(this, WeekViewActivity::class.java))
     }
+
+    fun backHome(view: android.view.View) {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
 }

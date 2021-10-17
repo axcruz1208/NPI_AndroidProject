@@ -82,4 +82,8 @@ class DailyViewActivity : AppCompatActivity() {
     fun DailyToWeekly(view: android.view.View) {
         startActivity(Intent(this, WeekViewActivity::class.java))
     }
+
+    fun backHome(view: android.view.View) {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
 }
