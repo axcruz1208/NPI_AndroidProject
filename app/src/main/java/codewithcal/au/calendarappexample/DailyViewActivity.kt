@@ -3,11 +3,13 @@ package codewithcal.au.calendarappexample
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.util.ArrayList
+import java.util.*
 
 class DailyViewActivity : AppCompatActivity() {
     private var dayOfWeek: TextView? = null
@@ -15,6 +17,13 @@ class DailyViewActivity : AppCompatActivity() {
     private var rv: RecyclerView? = null
     private var classrooms = ArrayList<Classroom>()
     private var noHayClase: TextView? = null
+    private var noHayClase2: TextView? = null
+
+    //CardView variables
+    private var nextClass: CardView? = null
+    private var nextClass_name: TextView? = null
+    private var nextClass_description: TextView? = null
+    private var nextClass_photo: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,20 +39,27 @@ class DailyViewActivity : AppCompatActivity() {
         dayAndMonth = findViewById(R.id.MonthAndDay)
         rv = findViewById(R.id.rv)
         noHayClase = findViewById(R.id.NoHayClase)
+        noHayClase2 = findViewById(R.id.NoHayClase2)
+
+        nextClass = findViewById(R.id.nextClass)
+        nextClass_name = findViewById(R.id.nextClass_name)
+        nextClass_description = findViewById(R.id.nextclass_description)
+        nextClass_photo = findViewById(R.id.nextClass_photo)
     }
 
     private fun setClassrooms(){
 
         noHayClase!!.visibility = View.GONE
+        noHayClase2!!.visibility = View.GONE
 
-        val NPIT = Classroom("NPI (Teoría)", getString(R.string.NPIT), R.drawable.npi)
-        val NPIP = Classroom("NPI (Prácticas)", getString(R.string.NPIP), R.drawable.npi)
-        val RSCT = Classroom("RSC (Teoría)", getString(R.string.RSCT), R.drawable.rsc)
-        val RSCP = Classroom("RSC (Prácticas)", getString(R.string.RSCP), R.drawable.rsc)
-        val VCT = Classroom("VC (Teoría)", getString(R.string.VCT), R.drawable.vc)
-        val VCP = Classroom("VC (Prácticas)", getString(R.string.VCP), R.drawable.vc)
-        val PLT = Classroom("PL (Teoría)", getString(R.string.PLT), R.drawable.pl)
-        val PLP = Classroom("PL (Prácticas)", getString(R.string.PLP), R.drawable.pl)
+        val NPIT = Classroom("NPI (Teoría)", getString(R.string.NPIT), R.drawable.npi, 1030)
+        val NPIP = Classroom("NPI (Prácticas)", getString(R.string.NPIP), R.drawable.npi, 830)
+        val RSCT = Classroom("RSC (Teoría)", getString(R.string.RSCT), R.drawable.rsc, 930)
+        val RSCP = Classroom("RSC (Prácticas)", getString(R.string.RSCP), R.drawable.rsc, 1130)
+        val VCT = Classroom("VC (Teoría)", getString(R.string.VCT), R.drawable.vc, 830)
+        val VCP = Classroom("VC (Prácticas)", getString(R.string.VCP), R.drawable.vc, 1030)
+        val PLT = Classroom("PL (Teoría)", getString(R.string.PLT), R.drawable.pl, 1230)
+        val PLP = Classroom("PL (Prácticas)", getString(R.string.PLP), R.drawable.pl, 1230)
 
         when(MonthViewActivity.selectedDay?.dayOfWeek!!.name){
             "WEDNESDAY"-> {
@@ -62,8 +78,28 @@ class DailyViewActivity : AppCompatActivity() {
             }
             else -> {
                 rv!!.visibility = View.GONE
+                nextClass!!.visibility = View.GONE
                 noHayClase!!.visibility = View.VISIBLE
+                noHayClase2!!.visibility = View.VISIBLE
             }
+        }
+
+        //A mas cercano le asignamos la hora actual
+        if(nextClass!!.visibility == View.VISIBLE) {
+            val calendar = Calendar.getInstance()
+            var horaActual = (calendar.get(Calendar.HOUR_OF_DAY).toString() + calendar.get(Calendar.MINUTE).toString()).toInt()
+            var masCercano = 2400
+            var position = 0
+            for (i in classrooms.indices) {
+                if (classrooms[i].time - horaActual < masCercano && horaActual < classrooms[i].time) {
+                    masCercano = classrooms[i].time - horaActual
+                    position = i
+                }
+            }
+
+            nextClass_name!!.text = classrooms[position].name
+            nextClass_description!!.text = classrooms[position].description
+            nextClass_photo!!.setImageResource(classrooms[position].photoID)
         }
     }
 
