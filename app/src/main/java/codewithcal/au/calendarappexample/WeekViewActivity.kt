@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import android.view.MotionEvent
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
 import com.islandparadise14.mintable.MinTimeTableView
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
-import com.islandparadise14.mintable.tableinterface.OnScheduleClickListener
 import java.time.LocalDate
 
 class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
@@ -94,7 +92,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
     }
 
     override fun onItemClick(position: Int, dayText: String?) {
-        MainActivity.selectedDay = LocalDate.of(CalendarUtils.selectedDate!!.year, CalendarUtils.selectedDate!!.month, dayText!!.toInt())
+        MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.selectedDate!!.year, CalendarUtils.selectedDate!!.month, dayText!!.toInt())
         startActivity(Intent(this, DailyViewActivity::class.java))
     }
 
@@ -136,7 +134,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
     }
 
     fun dailyAction(view: View?) {
-        MainActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
+        MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
         startActivity(Intent(this, DailyViewActivity::class.java))
     }
 
@@ -150,4 +148,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
         setWeekView()
     }
 
+    fun monthlyAction(view: android.view.View) {
+        startActivity(Intent(this, MonthViewActivity::class.java))
+    }
 }

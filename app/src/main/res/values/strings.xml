@@ -3,4 +3,13 @@
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
     <string name="email_sent"><![CDATA[->]]></string>
+    <string name="horario">Horario</string>
+    <string name="NPIT"> <![CDATA[ Aula: 1.5\nHora: 10:30-12:30\nProfesor: Marcelino Cabrera Cuevas ]]> </string>
+    <string name="NPIP"> <![CDATA[ Aula: 3.3\nHora: 8:30-10:30\nProfesor: Marcelino Cabrera Cuevas ]]> </string>
+    <string name="RSCT"> <![CDATA[ Aula: 0.8\nHora: 9:30-11:30\nProfesor: Oscar Cordón Garcia ]]> </string>
+    <string name="RSCP"> <![CDATA[ Aula: 0.8\nHora: 11:30-13:30\nProfesor: Oscar Cordón Garcia ]]> </string>
+    <string name="VCT"> <![CDATA[ Aula: 1.7\nHora: 8:30-10:30\nProfesor: Nicolás Pérez de la Blanca Capilla  ]]> </string>
+    <string name="VCP"> <![CDATA[ Aula: 3.7\nHora: 10:30-12:30\nProfesor: Nicolás Pérez de la Blanca Capilla ]]> </string>
+    <string name="PLT"> <![CDATA[ Aula: 1.5\nHora: 12:30-14:30\nProfesor: Salvador Villena Morales  ]]> </string>
+    <string name="PLP"> <![CDATA[ Aula: 2.8\nHora: 12:30-14:30\nProfesor: Ramón López-Cózar Delgado ]]> </string>
 </resources>

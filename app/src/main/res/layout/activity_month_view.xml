@@ -4,51 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".WeekViewActivity">
+    tools:context=".MonthViewActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="203dp"
-            android:layout_height="wrap_content"
-            android:background="#A961BD"
-            android:fontFamily="serif"
-            android:onClick="monthlyAction"
-            android:text="Monthly"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="209dp"
-            android:layout_height="wrap_content"
-            android:background="#A961BD"
-            android:fontFamily="serif"
-            android:onClick="dailyAction"
-            android:text="Daily"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <Button
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#A961BD"
+        android:onClick="weeklyAction"
+        android:text="Weekly"
+        android:fontFamily="serif"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:onClick="previousWeekAction"
+            android:onClick="previousMonthAction"
             android:text="@string/back"
             android:textColor="#A961BD"
             android:textSize="20sp"
@@ -57,20 +40,20 @@
         <TextView
             android:id="@+id/monthYearTV"
             android:layout_width="0dp"
-            android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
+            android:layout_weight="2"
             android:text="Feb 2021"
-            android:textSize="20sp"
+            android:fontFamily="serif"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:onClick="nextWeekAction"
+            android:onClick="nextMonthAction"
             android:text="@string/forward"
             android:textColor="#A961BD"
             android:textSize="20sp"
@@ -153,22 +136,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="211dp"
-        android:layout_weight="1">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:background="?android:attr/listDivider" />
-
-    <com.islandparadise14.mintable.MinTimeTableView
-        android:id="@+id/horarioClases"
-        android:layout_width="match_parent"
-        android:layout_height="506dp" />
-
+        android:layout_height="match_parent" />
 
 </LinearLayout>

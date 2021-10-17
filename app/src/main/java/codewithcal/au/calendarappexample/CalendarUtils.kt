@@ -10,8 +10,10 @@ object CalendarUtils {
 
     @JvmField
     var selectedDate: LocalDate? = null
+
     @JvmField
     var actualDate: LocalDate? = null
+
     @JvmStatic
     fun monthYearFromDate(date: LocalDate): String {
         val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
