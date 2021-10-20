@@ -1,5 +1,6 @@
 package codewithcal.au.calendarappexample
 
+import android.annotation.SuppressLint
 import codewithcal.au.calendarappexample.CalendarUtils.daysInMonthArray
 import androidx.appcompat.app.AppCompatActivity
 import codewithcal.au.calendarappexample.CalendarAdapter.OnItemListener
@@ -10,6 +11,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import android.view.MotionEvent
+import android.widget.LinearLayout
+import android.widget.Toast
 import java.time.LocalDate
 import android.view.View as View1
 
