@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_month_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_monthly_view.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/activity_week_view.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/activity_week_view.xml" value="0.33" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.33" />
         <entry key="app/src/main/res/layout/classroom_cell.xml" value="0.33" />
         <entry key="app/src/main/res/layout/event_cell.xml" value="0.35520833333333335" />

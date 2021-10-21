@@ -2,6 +2,7 @@
 
 <app.futured.hauler.HaulerView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/haulerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,8 +13,6 @@
         android:fillViewport="true">
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -24,10 +23,10 @@
                 android:layout_width="411dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#A961BD"
+                android:background="@color/morado_claro"
+                android:fontFamily="serif"
                 android:onClick="weeklyAction"
                 android:text="Weekly"
-                android:fontFamily="serif"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -46,7 +45,7 @@
                     android:background="@null"
                     android:onClick="previousMonthAction"
                     android:text="@string/back"
-                    android:textColor="#A961BD"
+                    android:textColor="@color/morado_claro"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -68,7 +67,7 @@
                     android:background="@null"
                     android:onClick="nextMonthAction"
                     android:text="@string/forward"
-                    android:textColor="#A961BD"
+                    android:textColor="@color/morado_claro"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 

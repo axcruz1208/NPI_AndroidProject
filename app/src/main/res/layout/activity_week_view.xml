@@ -24,23 +24,25 @@
         android:orientation="horizontal">
 
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="203dp"
             android:layout_height="wrap_content"
-            android:background="#A961BD"
+            android:background="@color/morado_claro"
             android:fontFamily="serif"
             android:onClick="monthlyAction"
-            android:text="Monthly"
+            android:text="MONTHLY"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="209dp"
             android:layout_height="wrap_content"
-            android:background="#A961BD"
+            android:background="@color/morado_claro"
             android:fontFamily="serif"
             android:onClick="dailyAction"
-            android:text="Daily"
+            android:text="DAILY"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -60,7 +62,7 @@
             android:background="@null"
             android:onClick="previousWeekAction"
             android:text="@string/back"
-            android:textColor="#A961BD"
+            android:textColor="@color/morado_claro"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -70,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:fontFamily="serif"
-            android:text="Feb 2021"
+            android:text="feb_2021"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -82,7 +84,7 @@
             android:background="@null"
             android:onClick="nextWeekAction"
             android:text="@string/forward"
-            android:textColor="#A961BD"
+            android:textColor="@color/morado_claro"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -99,7 +101,7 @@
             android:layout_weight="1"
             android:text="MON"
             android:textAlignment="center"
-            android:textColor="@color/gray"
+            android:textColor="#546E7A"
             android:textSize="16sp" />
 
         <TextView
@@ -108,7 +110,7 @@
             android:layout_weight="1"
             android:text="TUE"
             android:textAlignment="center"
-            android:textColor="@color/gray"
+            android:textColor="#546E7A"
             android:textSize="16sp" />
 
         <TextView
@@ -187,9 +189,10 @@
         android:layout_width="58dp"
         android:layout_height="59dp"
         android:layout_gravity="right"
-        android:onClick="backHome"
         android:background="@drawable/home"
-        android:backgroundTint="#A961BD"
+        android:backgroundTint="@color/morado_claro"
+        android:contentDescription="TODO"
+        android:onClick="backHome"
         tools:ignore="SpeakableTextPresentCheck" />
 
 

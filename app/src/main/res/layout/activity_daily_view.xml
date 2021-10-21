@@ -2,6 +2,8 @@
 
 <app.futured.hauler.HaulerView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/haulerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,9 +14,6 @@
         android:fillViewport="true">
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -30,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="153dp"
-                    android:background="#A961BD"
+                    android:background="@color/morado_claro"
                     android:fontFamily="serif"
                     android:onClick="DailyToWeekly"
                     android:text="Weekly"
@@ -57,7 +56,7 @@
                     android:fontFamily="serif"
                     android:gravity="center"
                     android:text="DiaDeLaSemana"
-                    android:textColor="#A961BD"
+                    android:textColor="@color/morado_claro"
                     android:textSize="50dp"
                     app:layout_constraintBottom_toTopOf="@+id/divider"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +73,7 @@
                     android:fontFamily="serif"
                     android:gravity="center"
                     android:text="day/month"
-                    android:textColor="#A961BD"
+                    android:textColor="@color/morado_claro"
                     android:textSize="20dp"
                     app:layout_constraintBottom_toTopOf="@+id/divider"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -222,7 +221,7 @@
                     android:layout_gravity="right"
                     android:layout_marginBottom="1dp"
                     android:background="@drawable/home"
-                    android:backgroundTint="#A961BD"
+                    android:backgroundTint="@color/morado_claro"
                     android:onClick="backHome"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

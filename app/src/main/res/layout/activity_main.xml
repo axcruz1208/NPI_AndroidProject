@@ -13,7 +13,7 @@
         android:layout_width="267dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
-        android:background="#A961BD"
+        android:background="@color/morado_claro"
         android:fontFamily="serif"
         android:onClick="calendarAccess"
         android:text="@string/horario"
