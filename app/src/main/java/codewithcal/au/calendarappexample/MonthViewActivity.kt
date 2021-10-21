@@ -1,6 +1,5 @@
 package codewithcal.au.calendarappexample
 
-import android.annotation.SuppressLint
 import codewithcal.au.calendarappexample.CalendarUtils.daysInMonthArray
 import androidx.appcompat.app.AppCompatActivity
 import codewithcal.au.calendarappexample.CalendarAdapter.OnItemListener
@@ -11,12 +10,12 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import android.view.MotionEvent
-import android.widget.LinearLayout
-import android.widget.Toast
+import app.futured.hauler.HaulerView
+import app.futured.hauler.setOnDragDismissedListener
 import java.time.LocalDate
 import android.view.View as View1
 
-class MonthViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+class MonthViewActivity : AppCompatActivity(), OnItemListener{
 
     companion object {
         @JvmField
@@ -27,18 +26,25 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.O
     private var calendarRecyclerView: RecyclerView? = null
     private var gestureDetector: GestureDetector? = null
 
+    private var haulerView: HaulerView? =  null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_month_view)
-        gestureDetector = GestureDetector(this, this)
-        gestureDetector!!.setOnDoubleTapListener(this)
         initWidgets()
+
+        haulerView!!.setOnDragDismissedListener {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
         CalendarUtils.selectedDate = LocalDate.now()
         CalendarUtils.actualDate = LocalDate.now()
         setMonthView()
     }
 
     private fun initWidgets() {
+        haulerView = findViewById((R.id.haulerView))
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
         monthYearText = findViewById(R.id.monthYearTV)
     }
@@ -73,38 +79,6 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.O
     override fun onTouchEvent(event: MotionEvent): Boolean {
         gestureDetector!!.onTouchEvent(event)
         return super.onTouchEvent(event)
-    }
-
-    override fun onSingleTapConfirmed(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onDoubleTap(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onDoubleTapEvent(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onDown(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onShowPress(motionEvent: MotionEvent) {}
-
-    override fun onSingleTapUp(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onScroll(motionEvent: MotionEvent, motionEvent1: MotionEvent, v: Float, v1: Float): Boolean {
-        return false
-    }
-
-    override fun onLongPress(motionEvent: MotionEvent) {}
-
-    override fun onFling(motionEvent: MotionEvent, motionEvent1: MotionEvent, v: Float, v1: Float): Boolean {
-        return false
     }
 
     fun weeklyAction(view: View1?) {

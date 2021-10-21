@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import app.futured.hauler.HaulerView
+import app.futured.hauler.setOnDragDismissedListener
 import java.util.*
 
 class DailyViewActivity : AppCompatActivity() {
@@ -19,6 +21,8 @@ class DailyViewActivity : AppCompatActivity() {
     private var noHayClase: TextView? = null
     private var noHayClase2: TextView? = null
 
+    private var haulerView: HaulerView? =  null
+
     //CardView variables
     private var nextClass: CardView? = null
     private var nextClass_name: TextView? = null
@@ -28,7 +32,14 @@ class DailyViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_view)
+
         initWidgets()
+
+        haulerView!!.setOnDragDismissedListener {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
         setDayView()
         setClassrooms()
         setRVView()
@@ -40,6 +51,8 @@ class DailyViewActivity : AppCompatActivity() {
         rv = findViewById(R.id.rv)
         noHayClase = findViewById(R.id.NoHayClase)
         noHayClase2 = findViewById(R.id.NoHayClase2)
+
+        haulerView = findViewById((R.id.haulerView))
 
         nextClass = findViewById(R.id.nextClass)
         nextClass_name = findViewById(R.id.nextClass_name)

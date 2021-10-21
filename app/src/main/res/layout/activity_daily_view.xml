@@ -1,222 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<app.futured.hauler.HaulerView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/haulerView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".DailyViewActivity">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="153dp"
-            android:background="#A961BD"
-            android:fontFamily="serif"
-            android:onClick="DailyToWeekly"
-            android:text="Weekly"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="OnClick" />
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".DailyViewActivity">
 
-        <TextView
-            android:id="@+id/DayOfWeek"
-            android:layout_width="395dp"
-            android:layout_height="87dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="74dp"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="DiaDeLaSemana"
-            android:textColor="#A961BD"
-            android:textSize="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button7"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/MonthAndDay"
-            android:layout_width="162dp"
-            android:layout_height="29dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="day/month"
-            android:textColor="#A961BD"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DayOfWeek" />
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="408dp"
-            android:layout_height="4dp"
-            android:layout_marginBottom="32dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toTopOf="@+id/nextLesson"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/NoHayClase"
-            android:layout_width="280dp"
-            android:layout_height="39dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="140dp"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="There is no lessons today"
-            android:textColor="#000000"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/NoHayClase2"
-            android:layout_width="280dp"
-            android:layout_height="39dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="There is no lesson today"
-            android:textColor="#000000"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/TodayLessons"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nextLesson" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/nextClass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="UnknownIdInLayout">
-
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/nextClass_photo"
-                    android:layout_width="82dp"
-                    android:layout_height="76dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="16dp" />
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="153dp"
+                    android:background="#A961BD"
+                    android:fontFamily="serif"
+                    android:onClick="DailyToWeekly"
+                    android:text="Weekly"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="OnClick" />
 
                 <TextView
-                    android:id="@+id/nextClass_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/nextClass_photo"
-                    android:text="NPI (Teoría)"
-                    android:textSize="20sp" />
+                    android:id="@+id/DayOfWeek"
+                    android:layout_width="395dp"
+                    android:layout_height="87dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="74dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="DiaDeLaSemana"
+                    android:textColor="#A961BD"
+                    android:textSize="50dp"
+                    app:layout_constraintBottom_toTopOf="@+id/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button7"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/nextclass_description"
+                    android:id="@+id/MonthAndDay"
+                    android:layout_width="162dp"
+                    android:layout_height="29dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="day/month"
+                    android:textColor="#A961BD"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/DayOfWeek" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="408dp"
+                    android:layout_height="4dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toTopOf="@+id/nextLesson"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/NoHayClase"
+                    android:layout_width="280dp"
+                    android:layout_height="39dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="140dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="There is no lessons today"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.496"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/NoHayClase2"
+                    android:layout_width="280dp"
+                    android:layout_height="39dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="There is no lesson today"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/TodayLessons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.496"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nextLesson" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/nextClass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/nextClass_name"
-                    android:layout_toRightOf="@+id/nextClass_photo"
-                    android:text="@string/NPIT" />
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UnknownIdInLayout">
 
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
-            android:layout_width="412dp"
-            android:layout_height="142dp"
-            android:layout_marginTop="20dp"
-            android:background="#C1C1C1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TodayLessons" />
+                        <ImageView
+                            android:id="@+id/nextClass_photo"
+                            android:layout_width="82dp"
+                            android:layout_height="76dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginRight="16dp" />
 
-        <TextView
-            android:id="@+id/TodayLessons"
-            android:layout_width="235dp"
-            android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="240dp"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="TODAY LESSONS:"
-            android:textColor="#000000"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
-            app:layout_constraintStart_toStartOf="parent" />
+                        <TextView
+                            android:id="@+id/nextClass_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_toRightOf="@+id/nextClass_photo"
+                            android:text="NPI (Teoría)"
+                            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/nextLesson"
-            android:layout_width="235dp"
-            android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="448dp"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="NEXT LESSON:"
-            android:textColor="#000000"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
-            app:layout_constraintStart_toStartOf="parent" />
+                        <TextView
+                            android:id="@+id/nextclass_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/nextClass_name"
+                            android:layout_toRightOf="@+id/nextClass_photo"
+                            android:text="@string/NPIT" />
 
-        <ImageButton
-            android:id="@+id/homeButtom"
-            android:layout_width="58dp"
-            android:layout_height="59dp"
-            android:layout_gravity="right"
-            android:layout_marginBottom="1dp"
-            android:background="@drawable/home"
-            android:backgroundTint="#A961BD"
-            android:onClick="backHome"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="412dp"
+                    android:layout_height="142dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#C1C1C1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TodayLessons" />
+
+                <TextView
+                    android:id="@+id/TodayLessons"
+                    android:layout_width="235dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="240dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="TODAY LESSONS:"
+                    android:textColor="#000000"
+                    android:textSize="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.09"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/nextLesson"
+                    android:layout_width="235dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="448dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="NEXT LESSON:"
+                    android:textColor="#000000"
+                    android:textSize="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.09"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/homeButtom"
+                    android:layout_width="58dp"
+                    android:layout_height="59dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/home"
+                    android:backgroundTint="#A961BD"
+                    android:onClick="backHome"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</app.futured.hauler.HaulerView>

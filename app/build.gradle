@@ -48,6 +48,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.github.islandparadise14:Mintable:1.5.1'
     implementation 'com.squareup:seismic:1.0.3'
+    implementation "app.futured.hauler:hauler:4.X.X-SNAPSHOT"
 }
 
 repositories {

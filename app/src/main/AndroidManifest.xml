@@ -20,6 +20,7 @@
         <activity
             android:name="DailyViewActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Draggable"
             android:exported="false" />
         <activity
             android:name="WeekViewActivity"

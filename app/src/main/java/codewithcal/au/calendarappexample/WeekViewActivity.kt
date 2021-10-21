@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import android.view.MotionEvent
 import android.view.View
+import app.futured.hauler.HaulerView
+import app.futured.hauler.setOnDragDismissedListener
 import com.islandparadise14.mintable.MinTimeTableView
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
@@ -21,6 +23,8 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
     private var monthYearText: TextView? = null
     private var calendarRecyclerView: RecyclerView? = null
     private var gestureDetector: GestureDetector? = null
+
+    private var haulerView: HaulerView? =  null
 
     //Variables Horario
     private var day = arrayOf("Mon", "Tue", "Wen", "Thu", "Fri")
@@ -35,6 +39,12 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
         gestureDetector = GestureDetector(this, this)
         gestureDetector!!.setOnDoubleTapListener(this)
         initWidgets()
+
+        haulerView!!.setOnDragDismissedListener {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
         onWindowFocusChanged(false)
         setWeekView()
     }
@@ -77,6 +87,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
     }
 
     private fun initWidgets() {
+        haulerView = findViewById((R.id.haulerView))
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
         monthYearText = findViewById(R.id.monthYearTV)
         table = findViewById(R.id.horarioClases)
