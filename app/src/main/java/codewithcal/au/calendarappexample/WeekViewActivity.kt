@@ -18,12 +18,14 @@ import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
 import java.time.LocalDate
 
-class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+class WeekViewActivity : AppCompatActivity(), OnItemListener {
 
+    //Variables para declarar elementos del WeekViewActivity
     private var monthYearText: TextView? = null
     private var calendarRecyclerView: RecyclerView? = null
     private var gestureDetector: GestureDetector? = null
 
+    //Variable para Gesto de volver al MainActivity
     private var haulerView: HaulerView? =  null
 
     //Variables Horario
@@ -31,13 +33,15 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
     private var table: MinTimeTableView? = null
     private var scheduleList: ArrayList<ScheduleEntity> = ArrayList()
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param savedInstanceState: Observation of the current state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_week_view)
         createSchedule()
-        gestureDetector = GestureDetector(this, this)
-        gestureDetector!!.setOnDoubleTapListener(this)
         initWidgets()
 
         haulerView!!.setOnDragDismissedListener {
@@ -49,12 +53,19 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
         setWeekView()
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param hasFocus: Observation of the current state.
+     */
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         table?.initTable(day)
         table?.updateSchedules(scheduleList)
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun createSchedule(){
 
         val schedule = ScheduleEntity(
@@ -86,6 +97,9 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
         scheduleList.add(schedule8)
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun initWidgets() {
         haulerView = findViewById((R.id.haulerView))
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
@@ -93,6 +107,9 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
         table = findViewById(R.id.horarioClases)
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun setWeekView() {
         monthYearText!!.text = CalendarUtils.selectedDate!!.month.toString() + " " + CalendarUtils.selectedDate!!.year
         val days = daysInWeekArray(CalendarUtils.selectedDate!!)
@@ -102,68 +119,63 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener, GestureDetector.On
         calendarRecyclerView!!.adapter = calendarAdapter
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param position: Observation of the current state.
+     * @param dayText: Observation of the current state.
+     */
     override fun onItemClick(position: Int, dayText: String?) {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.selectedDate!!.year, CalendarUtils.selectedDate!!.month, dayText!!.toInt())
         startActivity(Intent(this, DailyViewActivity::class.java))
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param event: Observation of the current state.
+     */
     override fun onTouchEvent(event: MotionEvent): Boolean {
         gestureDetector!!.onTouchEvent(event)
         return super.onTouchEvent(event)
     }
 
-    override fun onSingleTapConfirmed(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onDoubleTap(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onDoubleTapEvent(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onDown(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onShowPress(motionEvent: MotionEvent) {}
-
-    override fun onSingleTapUp(motionEvent: MotionEvent): Boolean {
-        return false
-    }
-
-    override fun onScroll(motionEvent: MotionEvent, motionEvent1: MotionEvent, v: Float, v1: Float): Boolean {
-        return false
-    }
-
-    override fun onLongPress(motionEvent: MotionEvent) {}
-
-    override fun onFling( motionEvent: MotionEvent, motionEvent1: MotionEvent, v: Float, v1: Float): Boolean {
-        return false
-    }
-
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     fun dailyAction(view: View?) {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
         startActivity(Intent(this, DailyViewActivity::class.java))
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     fun previousWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusWeeks(1)
         setWeekView()
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param stateObs: Observation of the current state.
+     */
     fun nextWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.plusWeeks(1)
         setWeekView()
     }
 
-    fun monthlyAction(view: android.view.View) {
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param stateObs: Observation of the current state.
+     */
+    fun monthlyAction(view: View?) {
         startActivity(Intent(this, MonthViewActivity::class.java))
     }
 
-    fun backHome(view: android.view.View) {
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param stateObs: Observation of the current state.
+     */
+    fun backHome(view: View?) {
         startActivity(Intent(this, MainActivity::class.java))
     }
 }

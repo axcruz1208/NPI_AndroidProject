@@ -6,10 +6,15 @@ import android.os.Bundle
 import com.squareup.seismic.ShakeDetector
 import java.time.LocalDate
 import android.hardware.SensorManager
+import android.view.View
 
 
 class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param savedInstanceState: Observation of the current state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,11 +28,17 @@ class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
         CalendarUtils.actualDate = LocalDate.now()
     }
 
-    fun calendarAccess(view: android.view.View) {
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
+    fun calendarAccess(view: View?) {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
         startActivity(Intent(this, DailyViewActivity::class.java))
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     override fun hearShake() {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
         startActivity(Intent(this, DailyViewActivity::class.java))

@@ -14,6 +14,8 @@ import app.futured.hauler.setOnDragDismissedListener
 import java.util.*
 
 class DailyViewActivity : AppCompatActivity() {
+
+    //Variables para declarar elementos del DailyViewActivity
     private var dayOfWeek: TextView? = null
     private var dayAndMonth: TextView? = null
     private var rv: RecyclerView? = null
@@ -21,6 +23,7 @@ class DailyViewActivity : AppCompatActivity() {
     private var noHayClase: TextView? = null
     private var noHayClase2: TextView? = null
 
+    //Variable para Gesto de volver al MainActivity
     private var haulerView: HaulerView? =  null
 
     //CardView variables
@@ -29,6 +32,10 @@ class DailyViewActivity : AppCompatActivity() {
     private var nextClass_description: TextView? = null
     private var nextClass_photo: ImageView? = null
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param savedInstanceState: Observation of the current state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_view)
@@ -45,6 +52,9 @@ class DailyViewActivity : AppCompatActivity() {
         setRVView()
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun initWidgets() {
         dayOfWeek = findViewById(R.id.DayOfWeek)
         dayAndMonth = findViewById(R.id.MonthAndDay)
@@ -60,6 +70,9 @@ class DailyViewActivity : AppCompatActivity() {
         nextClass_photo = findViewById(R.id.nextClass_photo)
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun setClassrooms(){
 
         noHayClase!!.visibility = View.GONE
@@ -116,6 +129,9 @@ class DailyViewActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun setRVView(){
         rv!!.setHasFixedSize(true)
         rv!!.layoutManager = LinearLayoutManager(this)
@@ -123,16 +139,25 @@ class DailyViewActivity : AppCompatActivity() {
         rv!!.adapter = adapter
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun setDayView() {
         dayOfWeek!!.text = MonthViewActivity.selectedDay?.dayOfWeek!!.name
         dayAndMonth!!.text = MonthViewActivity.selectedDay!!.month.toString() + "/" + MonthViewActivity.selectedDay!!.dayOfMonth
     }
 
-    fun DailyToWeekly(view: android.view.View) {
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
+    fun DailyToWeekly(view: View?) {
         startActivity(Intent(this, WeekViewActivity::class.java))
     }
 
-    fun backHome(view: android.view.View) {
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
+    fun backHome(view: View?) {
         startActivity(Intent(this, MainActivity::class.java))
     }
 }

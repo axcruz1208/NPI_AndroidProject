@@ -17,17 +17,24 @@ import android.view.View as View1
 
 class MonthViewActivity : AppCompatActivity(), OnItemListener{
 
+    //El día seleccionado en el calendario
     companion object {
         @JvmField
         var selectedDay: LocalDate? = null
     }
 
+    //Variables para declarar elementos del MonthViewActivity
     private var monthYearText: TextView? = null
     private var calendarRecyclerView: RecyclerView? = null
     private var gestureDetector: GestureDetector? = null
 
+    //Variable para Gesto de volver al MainActivity
     private var haulerView: HaulerView? =  null
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param savedInstanceState: Observation of the current state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_month_view)
@@ -43,13 +50,18 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
         setMonthView()
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun initWidgets() {
         haulerView = findViewById((R.id.haulerView))
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
         monthYearText = findViewById(R.id.monthYearTV)
     }
 
-
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     private fun setMonthView() {
         monthYearText!!.text = CalendarUtils.selectedDate!!.month.toString() + " " + CalendarUtils.selectedDate!!.year
         val daysInMonth = daysInMonthArray(CalendarUtils.selectedDate)
@@ -59,16 +71,11 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
         calendarRecyclerView!!.adapter = calendarAdapter
     }
 
-    fun previousMonthAction(view: View1?) {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusMonths(1)
-        setMonthView()
-    }
-
-    fun nextMonthAction(view: View1?) {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.plusMonths(1)
-        setMonthView()
-    }
-
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param position: Observation of the current state.
+     * @param dayText:
+     */
     override fun onItemClick(position: Int, dayText: String?) {
         if (dayText != "") {
             selectedDay = LocalDate.of(CalendarUtils.selectedDate!!.year, CalendarUtils.selectedDate!!.month, dayText!!.toInt())
@@ -76,15 +83,41 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
         }
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param event:
+     */
     override fun onTouchEvent(event: MotionEvent): Boolean {
         gestureDetector!!.onTouchEvent(event)
         return super.onTouchEvent(event)
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
+    fun previousMonthAction(view: View1?) {
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusMonths(1)
+        setMonthView()
+    }
+
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
+    fun nextMonthAction(view: View1?) {
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.plusMonths(1)
+        setMonthView()
+    }
+
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     fun weeklyAction(view: View1?) {
         startActivity(Intent(this, WeekViewActivity::class.java))
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     */
     fun backHome(view: android.view.View) {
         startActivity(Intent(this, MainActivity::class.java))
     }

@@ -3,23 +3,19 @@ package codewithcal.au.calendarappexample
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth
-import java.time.format.DateTimeFormatter
 import java.util.ArrayList
 
 object CalendarUtils {
 
+    //Día actual y seleccionado
     @JvmField
     var selectedDate: LocalDate? = null
-
-    @JvmField
     var actualDate: LocalDate? = null
 
-    @JvmStatic
-    fun monthYearFromDate(date: LocalDate): String {
-        val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
-        return date.format(formatter)
-    }
-
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param date: Observation of the current state.
+     */
     @JvmStatic
     fun daysInMonthArray(date: LocalDate?): ArrayList<LocalDate?> {
         val daysInMonthArray = ArrayList<LocalDate?>()
@@ -37,6 +33,10 @@ object CalendarUtils {
         return daysInMonthArray
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param selectedDate: Observation of the current state.
+     */
     @JvmStatic
     fun daysInWeekArray(selectedDate: LocalDate): ArrayList<LocalDate?> {
         val days = ArrayList<LocalDate?>()
@@ -49,6 +49,10 @@ object CalendarUtils {
         return days
     }
 
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * @param Current: Observation of the current state.
+     */
     private fun mondayForDate(Current: LocalDate): LocalDate? {
         var current = Current
         val oneWeekAgo = current.minusWeeks(1)
