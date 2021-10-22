@@ -1,4 +1,4 @@
-package codewithcal.au.calendarappexample
+package axcruz.horario
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import com.squareup.seismic.ShakeDetector
 import java.time.LocalDate
 import android.hardware.SensorManager
 import android.view.View
+import axcruz.horario.R
 
 class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
 

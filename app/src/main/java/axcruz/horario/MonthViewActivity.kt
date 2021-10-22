@@ -1,8 +1,8 @@
-package codewithcal.au.calendarappexample
+package axcruz.horario
 
-import codewithcal.au.calendarappexample.CalendarUtils.daysInMonthArray
+import axcruz.horario.CalendarUtils.daysInMonthArray
 import androidx.appcompat.app.AppCompatActivity
-import codewithcal.au.calendarappexample.CalendarAdapter.OnItemListener
+import axcruz.horario.CalendarAdapter.OnItemListener
 import android.view.GestureDetector
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import app.futured.hauler.HaulerView
 import app.futured.hauler.setOnDragDismissedListener
+import axcruz.horario.R
 import java.time.LocalDate
 import android.view.View as View1
 

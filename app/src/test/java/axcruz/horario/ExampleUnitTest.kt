@@ -1,4 +1,4 @@
-package codewithcal.au.calendarappexample
+package axcruz.horario
 
 import org.junit.Assert
 import org.junit.Test

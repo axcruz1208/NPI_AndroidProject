@@ -1,4 +1,4 @@
-package codewithcal.au.calendarappexample
+package axcruz.horario
 
 class Classroom(name: String, description: String, photo: Int, time: Int) {
 

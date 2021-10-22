@@ -1,4 +1,4 @@
-package codewithcal.au.calendarappexample
+package axcruz.horario
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import axcruz.horario.R
 import java.util.ArrayList
 
 internal class ClassroomAdapter(private val classrooms: ArrayList<Classroom>?) : RecyclerView.Adapter<ClassroomAdapter.ClassroomViewHolder>() {
@@ -40,8 +41,8 @@ internal class ClassroomAdapter(private val classrooms: ArrayList<Classroom>?) :
      */
     override fun onBindViewHolder(holder: ClassroomViewHolder, position: Int) {
         holder.className.text = classrooms!![position].name
-        holder.classDescription.text = classrooms!![position].description
-        holder.classPhoto.setImageResource(classrooms!![position].photoID!!)
+        holder.classDescription.text = classrooms[position].description
+        holder.classPhoto.setImageResource(classrooms[position].photoID)
     }
 
     /**

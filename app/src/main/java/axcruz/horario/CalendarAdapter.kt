@@ -1,4 +1,4 @@
-package codewithcal.au.calendarappexample
+package axcruz.horario
 
 import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import axcruz.horario.R
 import java.time.LocalDate
 import java.util.ArrayList
 

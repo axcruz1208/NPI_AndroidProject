@@ -1,8 +1,8 @@
-package codewithcal.au.calendarappexample
+package axcruz.horario
 
-import codewithcal.au.calendarappexample.CalendarUtils.daysInWeekArray
+import axcruz.horario.CalendarUtils.daysInWeekArray
 import androidx.appcompat.app.AppCompatActivity
-import codewithcal.au.calendarappexample.CalendarAdapter.OnItemListener
+import axcruz.horario.CalendarAdapter.OnItemListener
 import android.view.GestureDetector
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +12,7 @@ import android.content.Intent
 import android.view.View
 import app.futured.hauler.HaulerView
 import app.futured.hauler.setOnDragDismissedListener
+import axcruz.horario.R
 import com.islandparadise14.mintable.MinTimeTableView
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
