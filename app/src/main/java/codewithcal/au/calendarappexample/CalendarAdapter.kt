@@ -12,9 +12,9 @@ import java.util.ArrayList
 internal class CalendarAdapter( private val days: ArrayList<LocalDate?>,  private val onItemListener: OnItemListener) : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param itemView: Observation of the current state.
-     * @param onItemListener:
+     * Clase interna que nos permite declarar que contenido va a almacenar cada vista del recyclerView.
+     * @param itemView: Vista del recycler view que se está declarando
+     * @param onItemListener: Elemento que va a estar "escuchando", esperando a que lo pulsen.
      */
     class CalendarViewHolder internal constructor(itemView: View, private val onItemListener: OnItemListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
@@ -31,9 +31,9 @@ internal class CalendarAdapter( private val days: ArrayList<LocalDate?>,  privat
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param parent: Observation of the current state.
-     * @param viewType:
+     * Función que crea un nuevo viewHolder cuando no hay ViewHolders que recyclerView pueda utilizar
+     * @param parent: ViewGroup en el que se agregará la nueva vista después de que se vincule a una posición de adaptador.
+     * @param viewType:El tipo de vista
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -45,14 +45,18 @@ internal class CalendarAdapter( private val days: ArrayList<LocalDate?>,  privat
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param holder: Observation of the current state.
-     * @param position:
+     * Función que llama RecyclerView para mostrar los datos en la posición especificada.
+     * Este método debería actualizar el contenido de cada vista para reflejar el elemento en la posición dada.
+     * @param holder: ViewHolder que debe actualizarse para representar el contenido del elemento.
+     * @param position: La posición del elemento dentro del conjunto de datos del adaptador.
      */
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
         val date = days[position]
-        if (date == null) holder.dayOfMonth.text = "" else {
+        if (date == null)
+            holder.dayOfMonth.text = ""
+        else {
             holder.dayOfMonth.text = date.dayOfMonth.toString()
+            //En caso de que sea el día actual el que tiene que actualizar, lo pinta de color morado para diferenciarlo
             if (date == CalendarUtils.actualDate)
                 holder.parentView.setBackgroundColor(Color.parseColor("#FFA961BD"))
             else
@@ -61,15 +65,13 @@ internal class CalendarAdapter( private val days: ArrayList<LocalDate?>,  privat
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función que nos devuelve el número de vistar de nuestro ViewGroup, en este caso equivalente al
+     * número de días del mes o de la semana.
      */
     override fun getItemCount(): Int {
         return days.size
     }
 
-    /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     */
     interface OnItemListener {
         fun onItemClick(position: Int, dayText: String?)
     }

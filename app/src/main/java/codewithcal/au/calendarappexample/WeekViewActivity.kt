@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
-import android.view.MotionEvent
 import android.view.View
 import app.futured.hauler.HaulerView
 import app.futured.hauler.setOnDragDismissedListener
@@ -112,7 +111,8 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función que asigna al textView el mes actual y el año. Además actualiza el recyclerView con la disposición de días de la
+     * semana actual/seleccionada
      */
     private fun setWeekView() {
         monthYearText!!.text = CalendarUtils.selectedDate!!.month.toString() + " " + CalendarUtils.selectedDate!!.year
@@ -124,9 +124,10 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param position: Observation of the current state.
-     * @param dayText: Observation of the current state.
+     * Función que nos inicializa la variable selectedDay con el día del calendario que pulsemos y nos
+     * redirige a la actividad DailyViewActivity de el día seleccionado
+     * @param position: La posición de la vista en el adaptador.
+     * @param dayText: El texto que contiene la sección que hemos pulsado.
      */
     override fun onItemClick(position: Int, dayText: String?) {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.selectedDate!!.year, CalendarUtils.selectedDate!!.month, dayText!!.toInt())
@@ -134,16 +135,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param event: Observation of the current state.
-     */
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        gestureDetector!!.onTouchEvent(event)
-        return super.onTouchEvent(event)
-    }
-
-    /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos cambia a la semana anterior a la actual en el calendario
      */
     fun previousWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusWeeks(1)
@@ -151,7 +143,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos cambia a la semana posterior a la actual en el calendario
      */
     fun nextWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.plusWeeks(1)
@@ -159,7 +151,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos va a redirigir a la actividad DailyViewActivity
      */
     fun dailyAction(view: View?) {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
@@ -167,14 +159,14 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos va a redirigir a la actividad MonthViewActivity
      */
     fun monthlyAction(view: View?) {
         startActivity(Intent(this, MonthViewActivity::class.java))
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos va a redirigir a la actividad MainActivity
      */
     fun backHome(view: View?) {
         startActivity(Intent(this, MainActivity::class.java))

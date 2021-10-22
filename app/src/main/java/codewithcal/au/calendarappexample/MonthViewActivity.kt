@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
-import android.view.MotionEvent
 import app.futured.hauler.HaulerView
 import app.futured.hauler.setOnDragDismissedListener
 import java.time.LocalDate
@@ -61,7 +60,7 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     }
 
     /**
-     * Función que asigna al textView el mes actual y además actualiza el recyclerView con la disposición de días del
+     * Función que asigna al textView el mes actual y el año. Además actualiza el recyclerView con la disposición de días del
      * mes actual/seleccionado
      */
     private fun setMonthView() {
@@ -74,24 +73,16 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param position: Observation of the current state.
-     * @param dayText:
+     * Función que nos inicializa la variable selectedDay con el día del calendario que pulsemos y nos
+     * redirige a la actividad DailyViewActivity de el día seleccionado
+     * @param position: La posición de la vista en el adaptador.
+     * @param dayText: El texto que contiene la sección que hemos pulsado.
      */
     override fun onItemClick(position: Int, dayText: String?) {
         if (dayText != "") {
             selectedDay = LocalDate.of(CalendarUtils.selectedDate!!.year, CalendarUtils.selectedDate!!.month, dayText!!.toInt())
             startActivity(Intent(this, DailyViewActivity::class.java))
         }
-    }
-
-    /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param event:
-     */
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        gestureDetector!!.onTouchEvent(event)
-        return super.onTouchEvent(event)
     }
 
     /**
