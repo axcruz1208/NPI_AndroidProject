@@ -16,6 +16,7 @@
         <activity
             android:name="MonthViewActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Draggable"
             android:exported="false" />
         <activity
             android:name="DailyViewActivity"
@@ -25,6 +26,7 @@
         <activity
             android:name="WeekViewActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Draggable"
             android:exported="false" />
         <activity
             android:name="MainActivity"

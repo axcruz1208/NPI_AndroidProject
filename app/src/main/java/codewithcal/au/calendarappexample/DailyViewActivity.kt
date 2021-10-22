@@ -33,8 +33,9 @@ class DailyViewActivity : AppCompatActivity() {
     private var nextClass_photo: ImageView? = null
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param savedInstanceState: Observation of the current state.
+     * En esta función se inicializa su actividad. Aquí es donde normalmente se llamará a setContentView para definir
+     * la interfaz de usuario y usará findViewById para asignar los widgets a esa interfaz de usuario y poder programar con ellos.
+     * @param savedInstanceState: Nos guarda el estado de la apicación
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,7 @@ class DailyViewActivity : AppCompatActivity() {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función donde asignamos a las variables creadas el ID correspondiente con los widgets de la interfaz
      */
     private fun initWidgets() {
         dayOfWeek = findViewById(R.id.DayOfWeek)
@@ -71,7 +72,8 @@ class DailyViewActivity : AppCompatActivity() {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función donde se crean las asignaturas que podemos tener, son una variable de la clase Classroom.
+     * Además las mostramos en esta actividad de forma dinámica dependiendo de las clases que tengamos ese día.
      */
     private fun setClassrooms(){
 
@@ -87,6 +89,7 @@ class DailyViewActivity : AppCompatActivity() {
         val PLT = Classroom("PL (Teoría)", getString(R.string.PLT), R.drawable.pl, 1230)
         val PLP = Classroom("PL (Prácticas)", getString(R.string.PLP), R.drawable.pl, 1230)
 
+        //Como yo solo tengo clases los lunes, martes y miercoles. Son los días en los que asignamos clases
         when(MonthViewActivity.selectedDay?.dayOfWeek!!.name){
             "WEDNESDAY"-> {
                 classrooms.add(RSCT)
@@ -103,6 +106,9 @@ class DailyViewActivity : AppCompatActivity() {
                 classrooms.add(PLP)
             }
             else -> {
+
+                //En caso de que no tenga clase se muestra un mensaje de que hoy no hay clase
+
                 rv!!.visibility = View.GONE
                 nextClass!!.visibility = View.GONE
                 noHayClase!!.visibility = View.VISIBLE
@@ -110,7 +116,9 @@ class DailyViewActivity : AppCompatActivity() {
             }
         }
 
-        //A mas cercano le asignamos la hora actual
+        //Si tenemos clase, la siguiente clase será la más próxima a nuestra hora actual.
+        //Por lo que siempre que la hora de la clase sea mayor que la actual, asignamos como siguiente clase
+        //la que tenga una diferencia con nuestra hora actual menor.
         if(nextClass!!.visibility == View.VISIBLE) {
             val calendar = Calendar.getInstance()
             var horaActual = (calendar.get(Calendar.HOUR_OF_DAY).toString() + calendar.get(Calendar.MINUTE).toString()).toInt()
@@ -130,7 +138,7 @@ class DailyViewActivity : AppCompatActivity() {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función que inicializa el recyclerView que contiene todas las asignaturas del día actual/seleccionado
      */
     private fun setRVView(){
         rv!!.setHasFixedSize(true)
@@ -140,7 +148,7 @@ class DailyViewActivity : AppCompatActivity() {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función que asigna a los dos TexView de la interfaz el día y el mes actual, o boen del día que hayamos elegido
      */
     private fun setDayView() {
         dayOfWeek!!.text = MonthViewActivity.selectedDay?.dayOfWeek!!.name
@@ -148,14 +156,14 @@ class DailyViewActivity : AppCompatActivity() {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos va a redirigir a la actividad WeekViewActivity
      */
     fun DailyToWeekly(view: View?) {
         startActivity(Intent(this, WeekViewActivity::class.java))
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos va a redirigir a la actividad MainActivity
      */
     fun backHome(view: View?) {
         startActivity(Intent(this, MainActivity::class.java))

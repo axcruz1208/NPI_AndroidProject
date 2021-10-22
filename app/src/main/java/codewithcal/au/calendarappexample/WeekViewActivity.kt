@@ -34,8 +34,9 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     private var scheduleList: ArrayList<ScheduleEntity> = ArrayList()
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param savedInstanceState: Observation of the current state.
+     * En esta función se inicializa su actividad. Aquí es donde normalmente se llamará a setContentView para definir
+     * la interfaz de usuario y usará findViewById para asignar los widgets a esa interfaz de usuario y poder programar con ellos.
+     * @param savedInstanceState: Nos guarda el estado de la apicación
      */
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -44,6 +45,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         createSchedule()
         initWidgets()
 
+        //Le asignamos al Hauler que queremos cerrar esta actividad y volver al MainActivity
         haulerView!!.setOnDragDismissedListener {
             finish()
             startActivity(Intent(this, MainActivity::class.java))
@@ -54,17 +56,19 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param hasFocus: Observation of the current state.
+     * Función que asigna a una ventana si va a tener el foco de la actividad, es decir, si va a ser
+     * la ventana con la que el usuario va a interactuar
+     * @param hasFocus: Si la ventana de esta actividad tiene foco.
      */
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        table?.initTable(day)
-        table?.updateSchedules(scheduleList)
+        table?.initTable(day) //Asignamos la leyendo horizontal del horario (lunes, martes...)
+        table?.updateSchedules(scheduleList) //Le asignamos al horario las distintas clases
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función para crear las distintas clases que están en el horario semanal que pertenecen a una clase
+     * llamada schedule
      */
     private fun createSchedule(){
 
@@ -72,7 +76,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
             32, //originId
             "RSC-T", //scheduleName
             "0.8", //roomInfo
-            ScheduleDay.WEDNESDAY, //ScheduleDay object (MONDAY ~ SUNDAY)
+            ScheduleDay.WEDNESDAY, //ScheduleDay (MONDAY ~ SUNDAY)
             "9:30", //startTime format: "HH:mm"
             "11:30", //endTime  format: "HH:mm"
             "#f9c743", //backgroundColor (optional)
@@ -98,7 +102,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función donde asignamos a las variables creadas el ID correspondiente con los widgets de la interfaz
      */
     private fun initWidgets() {
         haulerView = findViewById((R.id.haulerView))
@@ -141,14 +145,6 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     /**
      * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
      */
-    fun dailyAction(view: View?) {
-        MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
-        startActivity(Intent(this, DailyViewActivity::class.java))
-    }
-
-    /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     */
     fun previousWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusWeeks(1)
         setWeekView()
@@ -156,7 +152,6 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
 
     /**
      * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param stateObs: Observation of the current state.
      */
     fun nextWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.plusWeeks(1)
@@ -165,7 +160,14 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
 
     /**
      * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param stateObs: Observation of the current state.
+     */
+    fun dailyAction(view: View?) {
+        MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
+        startActivity(Intent(this, DailyViewActivity::class.java))
+    }
+
+    /**
+     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
      */
     fun monthlyAction(view: View?) {
         startActivity(Intent(this, MonthViewActivity::class.java))
@@ -173,7 +175,6 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
 
     /**
      * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param stateObs: Observation of the current state.
      */
     fun backHome(view: View?) {
         startActivity(Intent(this, MainActivity::class.java))

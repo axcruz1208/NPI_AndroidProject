@@ -32,8 +32,9 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     private var haulerView: HaulerView? =  null
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param savedInstanceState: Observation of the current state.
+     * En esta función se inicializa su actividad. Aquí es donde normalmente se llamará a setContentView para definir
+     * la interfaz de usuario y usará findViewById para asignar los widgets a esa interfaz de usuario y poder programar con ellos.
+     * @param savedInstanceState: Nos guarda el estado de la apicación
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +52,7 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función donde asignamos a las variables creadas el ID correspondiente con los widgets de la interfaz
      */
     private fun initWidgets() {
         haulerView = findViewById((R.id.haulerView))
@@ -60,7 +61,8 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función que asigna al textView el mes actual y además actualiza el recyclerView con la disposición de días del
+     * mes actual/seleccionado
      */
     private fun setMonthView() {
         monthYearText!!.text = CalendarUtils.selectedDate!!.month.toString() + " " + CalendarUtils.selectedDate!!.year
@@ -93,7 +95,7 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos cambia al mes anterior al actual en el calendario
      */
     fun previousMonthAction(view: View1?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusMonths(1)
@@ -101,7 +103,7 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos cambia al mes posterior al actual en el calendario
      */
     fun nextMonthAction(view: View1?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.plusMonths(1)
@@ -109,14 +111,14 @@ class MonthViewActivity : AppCompatActivity(), OnItemListener{
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos va a redirigir a la actividad WeekViewActivity
      */
     fun weeklyAction(view: View1?) {
         startActivity(Intent(this, WeekViewActivity::class.java))
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick que al activarla nos va a redirigir a la actividad MainActivity
      */
     fun backHome(view: android.view.View) {
         startActivity(Intent(this, MainActivity::class.java))

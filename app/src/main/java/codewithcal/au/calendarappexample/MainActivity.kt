@@ -8,12 +8,12 @@ import java.time.LocalDate
 import android.hardware.SensorManager
 import android.view.View
 
-
 class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
-     * @param savedInstanceState: Observation of the current state.
+     * En esta función se inicializa su actividad. Aquí es donde normalmente se llamará a setContentView para definir
+     * la interfaz de usuario y usará findViewById para asignar los widgets a esa interfaz de usuario y poder programar con ellos.
+     * @param savedInstanceState: Nos guarda el estado de la apicación
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función onClick del botón Horario que nos va a redirigir a la actividad DailyViewActivity
      */
     fun calendarAccess(view: View?) {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), ShakeDetector.Listener {
     }
 
     /**
-     * Función que nos genera un array con las casillas que están junto a un muro y les aplica un wallDanger de 10
+     * Función que nos redirige a la actividad DailyViewActivity cuando agitamos el movil
      */
     override fun hearShake() {
         MonthViewActivity.selectedDay = LocalDate.of(CalendarUtils.actualDate!!.year, CalendarUtils.actualDate!!.month, CalendarUtils.actualDate!!.dayOfMonth)
